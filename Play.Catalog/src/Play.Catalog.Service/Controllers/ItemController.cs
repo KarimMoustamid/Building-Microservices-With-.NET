@@ -1,118 +1,95 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 namespace Play.Catalog.Service.Dtos;
+using Entities;
+using Repositories;
 
-    [ApiController]
+[ApiController]
     [Route("items")]
     public class ItemController : ControllerBase
     {
-        // NOTE : This is temporary. We will replace it with a proper database later.
-        private static readonly List<ItemDto> items = new List<ItemDto>()
-        {
-            new ItemDto(
-                Guid.NewGuid(),
-                "Health Potion",
-                "Restores 50 HP instantly.",
-                4.99M,
-                DateTimeOffset.UtcNow.AddDays(-10)
-            ),
-            new ItemDto(
-                Guid.NewGuid(),
-                "Iron Sword",
-                "Standard melee weapon with moderate damage.",
-                29.99M,
-                DateTimeOffset.UtcNow.AddDays(-8)
-            ),
-            new ItemDto(
-                Guid.NewGuid(),
-                "Wooden Shield",
-                "Basic shield that reduces incoming damage.",
-                14.50M,
-                DateTimeOffset.UtcNow.AddDays(-6)
-            ),
-            new ItemDto(
-                Guid.NewGuid(),
-                "Longbow",
-                "Ranged weapon with high accuracy.",
-                39.00M,
-                DateTimeOffset.UtcNow.AddDays(-4)
-            ),
-            new ItemDto(
-                Guid.NewGuid(),
-                "Leather Helmet",
-                "Light head protection, increases defense slightly.",
-                12.75M,
-                DateTimeOffset.UtcNow.AddDays(-2)
-            )
-        };
+        private readonly ItemsRepository itemsRepository = new ItemsRepository();
 
         [HttpGet]
-        public ActionResult<IEnumerable<ItemDto>> GetAll() => Ok(items);
+        public async Task<ActionResult<IEnumerable<ItemDto>>> GetAllAsync()
+        {
+            var items = (await itemsRepository.GetAllItemsAsync()).Select(item => item.AsDto());
+            return Ok(items);
+
+        }
 
         [HttpGet("{id:guid}")]
-        public ActionResult<ItemDto> GetItemById(Guid id)
+        public async Task<ActionResult<ItemDto>> GetItemByIdAsync(Guid id)
         {
-            var item = items.Find(i => i.Id == id);
+            var item = await itemsRepository.GetItemByIdAsync(id);
+
             if (item is null)
             {
                 return NotFound();
             }
 
-            return Ok(item);
+            return Ok(item.AsDto());
         }
 
         [HttpPost]
-        public ActionResult<ItemDto> CreateItem([FromBody] CreateItemDto item)
+        public async Task<ActionResult<ItemDto>> CreateItemAsync([FromBody] CreateItemDto createItem)
         {
-            if (item is null)
+            if (createItem is null)
                 return BadRequest();
 
-            var newItem = new ItemDto(Guid.NewGuid(), item.Name, item.Description, item.Price, DateTimeOffset.UtcNow);
+            var item = new Item()
+            {
+                Name = createItem.Name,
+                Description = createItem.Description,
+                Price = createItem.Price,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
 
-            items.Add(newItem);
+            await itemsRepository.CreateItemAsync(item);
 
-            return CreatedAtAction(nameof(GetItemById), new { id = newItem.Id }, newItem);
+            return CreatedAtAction(nameof(GetItemByIdAsync), new { id = item.Id }, item);
         }
 
         [HttpPut("{id:guid}")]
-        public ActionResult UpdateItem(Guid id, [FromBody] UpdateItemDto item)
+        public async Task<ActionResult> UpdateItem(Guid id, [FromBody] UpdateItemDto updateItemDto)
         {
-            if (item is null)
+            if (updateItemDto is null)
                 return BadRequest();
 
-            var existingItem = items.Find(i => i.Id == id);
+            var existingItem = await itemsRepository.GetItemByIdAsync(id);
 
             if (existingItem is null)
             {
-                var created = new ItemDto(id, item.Name, item.Description, item.Price, DateTimeOffset.UtcNow);
-                items.Add(created);
-                return CreatedAtAction(nameof(GetItemById), new { id = created.Id }, created);
+                var created = new Item
+                {
+                    Id = id,
+                    Name = updateItemDto.Name,
+                    Description = updateItemDto.Description,
+                    Price = updateItemDto.Price,
+                    CreatedDate = DateTimeOffset.UtcNow
+                };
+                await itemsRepository.CreateItemAsync(created);
+                return CreatedAtAction(nameof(GetItemByIdAsync), new { id = created.Id }, created.AsDto());
             }
 
-            var updatedItem = existingItem with
-            {
-                Name = item.Name,
-                Description = item.Description,
-                Price = item.Price
-            };
+            existingItem.Name = updateItemDto.Name;
+            existingItem.Description = updateItemDto.Description;
+            existingItem.Price = updateItemDto.Price;
 
-            var index = items.IndexOf(existingItem);
-            items[index] = updatedItem;
-
+            await itemsRepository.UpdateItemAsync(existingItem);
             return NoContent();
         }
 
         [HttpDelete("{id:guid}")]
-        public ActionResult DeleteItem(Guid id)
+        public async Task<ActionResult> DeleteItemAsync(Guid id)
         {
-            var itemToDelete = items.Find(i => i.Id == id);
+            var itemToDelete = await itemsRepository.GetItemByIdAsync(id);
+
             if (itemToDelete is null)
             {
                 return NotFound();
             }
 
-            items.RemoveAll(i => i.Id == id);
+            await itemsRepository.RemoveItemAsync(id);
             return NoContent();
         }
 

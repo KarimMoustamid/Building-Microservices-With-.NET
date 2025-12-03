@@ -54,7 +54,7 @@ namespace Play.Catalog.Service.Repositories
             await dbCollection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = false });
         }
 
-        public async Task DeleteItemAsync(Guid id)
+        public async Task RemoveItemAsync(Guid id)
         {
             FilterDefinition<Item> filter = filterBuilder.Eq(existingEntity => existingEntity.Id, id);
             await dbCollection.DeleteOneAsync(filter);
