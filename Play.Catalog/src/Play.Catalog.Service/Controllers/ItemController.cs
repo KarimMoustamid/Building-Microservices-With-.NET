@@ -85,7 +85,9 @@ namespace Play.Catalog.Service.Dtos;
 
             if (existingItem is null)
             {
-                return NotFound();
+                var created = new ItemDto(id, item.Name, item.Description, item.Price, DateTimeOffset.UtcNow);
+                items.Add(created);
+                return CreatedAtAction(nameof(GetItemById), new { id = created.Id }, created);
             }
 
             var updatedItem = existingItem with
