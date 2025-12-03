@@ -1,6 +1,14 @@
 namespace Play.Catalog.Service.Dtos;
-    public record ItemDto(Guid Id, string Name , string Description, decimal Price, DateTimeOffset CreatedDate);
+using System.ComponentModel.DataAnnotations;
 
-    public record CreateItemDto(string Name, string Description, decimal Price);
+public record ItemDto(Guid Id, string Name , string Description, decimal Price, DateTimeOffset CreatedDate);
 
-    public record UpdateItemDto(string Name, string Description, decimal Price);
+    public record CreateItemDto(
+        [Required] string Name,
+        string Description,
+        decimal Price);
+
+    public record UpdateItemDto(
+        [Required] string Name,
+        string Description,
+        [Range(0,1000)] decimal Price);
