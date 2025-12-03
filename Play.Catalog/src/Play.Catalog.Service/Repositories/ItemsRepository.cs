@@ -5,6 +5,8 @@ namespace Play.Catalog.Service.Repositories
 
     public class ItemsRepository
     {
+        // NOTE : Docker Command : docker run -d --rm --name mongoCatalog -p 27017:27017 -v mongodbdata:/data/db mongo
+
         // Name of the MongoDB collection where Item documents are stored.
         private const string collectionName = "items";
         // MongoDB collection handle typed to our entity class.

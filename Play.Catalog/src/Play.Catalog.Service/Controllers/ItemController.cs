@@ -3,7 +3,7 @@ namespace Play.Catalog.Service.Dtos;
 using Entities;
 using Repositories;
 
-[ApiController]
+    [ApiController]
     [Route("items")]
     public class ItemController : ControllerBase
     {
@@ -46,7 +46,8 @@ using Repositories;
 
             await itemsRepository.CreateItemAsync(item);
 
-            return CreatedAtAction(nameof(GetItemByIdAsync), new { id = item.Id }, item);
+            // MVC routing strips "Async" from action names, so supply the action name without the suffix
+            return CreatedAtAction(nameof(GetItemByIdAsync).Replace("Async", ""), new { id = item.Id }, item);
         }
 
         [HttpPut("{id:guid}")]
