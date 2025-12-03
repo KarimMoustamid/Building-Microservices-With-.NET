@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "H17ePD8X8xs=",
+  "success": true,
+  "projectFilePath": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+  "expectedPackageFiles": [
+    "/Users/karimmoustamid/.nuget/packages/microsoft.aspnetcore.openapi/10.0.0-rc.2.25502.107/microsoft.aspnetcore.openapi.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "/Users/karimmoustamid/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
