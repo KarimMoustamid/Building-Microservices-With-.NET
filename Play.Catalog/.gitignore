@@ -1,0 +1,58 @@
+# .gitignore for Play.Catalog (dotnet + JetBrains)
+
+# JetBrains Rider / IDE
+.idea/
+*.iml
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# NuGet
+*.nupkg
+# Packages folder
+packages/
+
+# Dotnet publish
+publish/
+
+# Logs
+*.log
+
+# Rider local history (if any)
+.idea/.idea_local_history/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Rider / IDE workspace files
+.cache/
+
+# Secrets
+secrets.json
+appsettings.*.json
+
+# compiled output
+*.dll
+*.exe
+*.pdb
+
+# Rider config
+.idea/
+
+# End of file
