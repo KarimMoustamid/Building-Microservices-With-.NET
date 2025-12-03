@@ -1,30 +1,22 @@
 namespace Play.Catalog.Service.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Entities;
     using MongoDB.Driver;
 
-    public class ItemsRepository
+    public class ItemsRepository(IMongoDatabase database) : IItemsRepository
     {
         // NOTE : Docker Command : docker run -d --rm --name mongoCatalog -p 27017:27017 -v mongodbdata:/data/db mongo
 
         // Name of the MongoDB collection where Item documents are stored.
         private const string collectionName = "items";
         // MongoDB collection handle typed to our entity class.
-        private readonly IMongoCollection<Item> dbCollection;
+        private readonly IMongoCollection<Item> dbCollection = database.GetCollection<Item>(collectionName);
         private readonly FilterDefinitionBuilder<Item> filterBuilder = Builders<Item>.Filter;
 
-        public ItemsRepository()
-        {
-          // Create a client and connect to the local MongoDB server.
-          MongoClient mongoClient = new MongoClient("mongodb://localhost:27017");
-
-          // Get (or create) the 'Catalog' database on the server.
-          IMongoDatabase? database = mongoClient.GetDatabase("Catalog");
-
-          // Get a strongly-typed handle to the 'items' collection within the database.
-          // This does not create network traffic by itself; operations on `_items` will talk to the server.
-          dbCollection = database.GetCollection<Item>(collectionName);
-        }
+        // This does not create network traffic by itself; operations on `_items` will talk to the server.
 
         #region Repository Methods
 

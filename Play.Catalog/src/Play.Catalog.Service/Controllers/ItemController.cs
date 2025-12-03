@@ -5,9 +5,9 @@ using Repositories;
 
     [ApiController]
     [Route("items")]
-    public class ItemController : ControllerBase
+    public class ItemController(IItemsRepository itemsRepository) : ControllerBase
     {
-        private readonly ItemsRepository itemsRepository = new ItemsRepository();
+        private readonly IItemsRepository itemsRepository = itemsRepository ?? throw new ArgumentNullException(nameof(itemsRepository));
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemDto>>> GetAllAsync()
