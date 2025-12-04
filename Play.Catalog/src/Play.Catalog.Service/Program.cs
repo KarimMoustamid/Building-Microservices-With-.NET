@@ -2,6 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Play.Catalog.Service.Entities;
 using Play.Catalog.Service.Repositories;
 using Play.Catalog.Service.Settings;
 
@@ -20,19 +21,11 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddSingleton(serviceProvider =>
-{
-    var mongoDbSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>() ?? new MongoDbSettings();
+// Register mongo client and IMongoDatabase using extension
+builder.Services.AddMongo(builder.Configuration, serviceSettings.ServiceName);
 
-    var mongoClient = new MongoClient(mongoDbSettings.ConnectionString);
-    return mongoClient.GetDatabase(serviceSettings.ServiceName);
-});
-
-builder.Services.AddSingleton<IItemsRepository, ItemsRepository>();
-
-// Note : Register a Guid serializer with explicit representation before creating MongoClient
-BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+// Register a repository for Item using the generic MongoRepository<T>
+builder.Services.AddMongoRepository<Item>("items");
 
 var app = builder.Build();
 
