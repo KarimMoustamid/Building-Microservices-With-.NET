@@ -15,7 +15,7 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ItemDto>>> GetAllAsync()
     {
-        var items = (await _itemsRepository.GetAllItemsAsync()).Select(item => item.AsDto());
+        var items = (await _itemsRepository.GetAllAsync()).Select(item => item.AsDto());
         return Ok(items);
 
     }
@@ -23,7 +23,7 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<ItemDto>> GetItemByIdAsync(Guid id)
     {
-        var item = await _itemsRepository.GetItemByIdAsync(id);
+        var item = await _itemsRepository.GetByIdAsync(id);
 
         if (item is null)
         {
@@ -47,7 +47,7 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
             CreatedDate = DateTimeOffset.UtcNow
         };
 
-        await _itemsRepository.CreateItemAsync(item);
+        await _itemsRepository.CreateAsync(item);
 
         // MVC routing strips "Async" from action names, so supply the action name without the suffix
         return CreatedAtAction(nameof(GetItemByIdAsync).Replace("Async", ""), new { id = item.Id }, item);
@@ -59,7 +59,7 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
         if (updateItemDto is null)
             return BadRequest();
 
-        var existingItem = await _itemsRepository.GetItemByIdAsync(id);
+        var existingItem = await _itemsRepository.GetByIdAsync(id);
 
         if (existingItem is null)
         {
@@ -71,7 +71,7 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
                 Price = updateItemDto.Price,
                 CreatedDate = DateTimeOffset.UtcNow
             };
-            await _itemsRepository.CreateItemAsync(created);
+            await _itemsRepository.CreateAsync(created);
             return CreatedAtAction(nameof(GetItemByIdAsync).Replace("Async", ""), new { id = created.Id }, created.AsDto());
         }
 
@@ -79,21 +79,21 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
         existingItem.Description = updateItemDto.Description;
         existingItem.Price = updateItemDto.Price;
 
-        await _itemsRepository.UpdateItemAsync(existingItem);
+        await _itemsRepository.UpdateAsync(existingItem);
         return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult> DeleteItemAsync(Guid id)
     {
-        var itemToDelete = await _itemsRepository.GetItemByIdAsync(id);
+        var itemToDelete = await _itemsRepository.GetByIdAsync(id);
 
         if (itemToDelete is null)
         {
             return NotFound();
         }
 
-        await _itemsRepository.RemoveItemAsync(id);
+        await _itemsRepository.RemoveAsync(id);
         return NoContent();
     }
 

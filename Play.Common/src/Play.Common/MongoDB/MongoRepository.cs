@@ -1,10 +1,13 @@
-namespace Play.Catalog.Service.Repositories
+#nullable enable
+
+namespace Play.Common.MongoDB
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Entities;
-    using MongoDB.Driver;
+    using System.Linq.Expressions;
+    using Play.Common.Repositories;
+    using global::MongoDB.Driver;
 
     public class MongoRepository<T> : IRepository<T> where T : IEntity
     {
@@ -20,15 +23,20 @@ namespace Play.Catalog.Service.Repositories
             _filterBuilder = Builders<T>.Filter;
         }
 
-        // This does not create network traffic by itself; operations on `_items` will talk to the server.
-
         #region Repository Methods
 
         public async Task<IReadOnlyCollection<T>> GetAllAsync() => await _dbCollection.Find(_filterBuilder.Empty).ToListAsync();
 
+        public async Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter) => await _dbCollection.Find(filter).ToListAsync();
+
         public async Task<T?> GetByIdAsync(Guid id)
         {
             FilterDefinition<T> filter = _filterBuilder.Eq(entity => entity.Id, id);
+            return await _dbCollection.Find(filter).FirstOrDefaultAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(Expression<Func<T, bool>> filter)
+        {
             return await _dbCollection.Find(filter).FirstOrDefaultAsync();
         }
 
