@@ -127,20 +127,6 @@
           }
         }
       },
-      "Play.Common/1.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "10.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
-          "Microsoft.Extensions.DependencyInjection": "10.0.0",
-          "MongoDB.Driver": "3.5.2"
-        },
-        "runtime": {
-          "lib/net10.0/Play.Common.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "SharpCompress/0.30.1": {
         "runtime": {
           "lib/net5.0/SharpCompress.dll": {
@@ -162,6 +148,20 @@
           "lib/net7.0/ZstdSharp.dll": {
             "assemblyVersion": "0.7.3.0",
             "fileVersion": "0.7.3.0"
+          }
+        }
+      },
+      "Play.Common/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection": "10.0.0",
+          "MongoDB.Driver": "3.5.2"
+        },
+        "runtime": {
+          "Play.Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -250,13 +250,6 @@
       "path": "mongodb.driver/3.5.2",
       "hashPath": "mongodb.driver.3.5.2.nupkg.sha512"
     },
-    "Play.Common/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-I7wTz5p3F6TkZ+DP9AmKlYUrgFk54/5Q/6dAkzr/b1fPlB4zk4zNGEzdsT1XRbXMWcZwDzJnFyZLv1Pd9osBBA==",
-      "path": "play.common/1.0.0",
-      "hashPath": "play.common.1.0.0.nupkg.sha512"
-    },
     "SharpCompress/0.30.1": {
       "type": "package",
       "serviceable": true,
@@ -277,6 +270,11 @@
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+    },
+    "Play.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
