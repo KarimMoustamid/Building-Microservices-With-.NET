@@ -11,8 +11,6 @@ namespace Play.Common.MongoDB
 
     public class MongoRepository<T> : IRepository<T> where T : IEntity
     {
-        // NOTE : Docker Command : docker run -d --rm --name mongoCatalog -p 27017:27017 -v mongodbdata:/data/db mongo
-
         // MongoDB collection handle typed to our entity class.
         private readonly IMongoCollection<T> _dbCollection;
         private readonly FilterDefinitionBuilder<T> _filterBuilder;

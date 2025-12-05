@@ -1,0 +1,14 @@
+# // NOTE : Docker Command : docker run -d --rm --name mongoCatalog -p 27017:27017 -v mongodbdata:/data/db mongo
+
+version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongoCatalog
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodbdata:/data/db
+
+volumes:
+  mongodbdata:
