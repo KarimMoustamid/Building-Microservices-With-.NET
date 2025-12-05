@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Play.Catalog.Service.Controllers;
-
+using Common.Repositories;
 using Dtos;
 using Entities;
-using Repositories;
 
 [ApiController]
 [Route("items")]
