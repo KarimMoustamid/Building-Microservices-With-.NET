@@ -4,15 +4,15 @@ using Play.Inventory.Entities;
 
 namespace Play.Inventory.Controller
 {
-    using Common;
-    using Common.Repositories;
+    using Play.Common;
+    using Play.Common.Repositories;
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("items")]
     public class ItemsController(IRepository<InventoryItem> itemRepository) : ControllerBase
     {
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Dtos.InventoryItemDto>>> GetAsync([FromQuery] Guid userId)
+        [HttpGet("{userId:guid}")]
+        public async Task<ActionResult<IEnumerable<Dtos.InventoryItemDto>>> GetAsync(Guid userId)
         {
             if (userId == Guid.Empty)
                 return BadRequest("userId is required");
@@ -42,7 +42,7 @@ namespace Play.Inventory.Controller
                 };
                 await itemRepository.CreateAsync(item);
                 // Return location header pointing to the GET endpoint for the user
-                return CreatedAtAction(nameof(GetAsync), new { userId = item.UserId }, item.AsDto());
+                return CreatedAtAction(nameof(GetAsync).Replace("Async", ""), new { userId = item.UserId }, item.AsDto());
 
             }
             else

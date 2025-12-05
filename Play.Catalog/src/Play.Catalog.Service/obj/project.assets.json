@@ -607,11 +607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectUniqueName": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "projectName": "Play.Catalog.Service",
-      "projectPath": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "packagesPath": "/Users/karimmoustamid/.nuget/packages/",
-      "outputPath": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/obj/",
+      "outputPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/karimmoustamid/.nuget/NuGet/NuGet.Config"

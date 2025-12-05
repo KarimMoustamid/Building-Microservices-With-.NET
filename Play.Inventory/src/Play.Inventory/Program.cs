@@ -13,6 +13,9 @@ builder.Services.AddControllers();
 // Register mongo client and IMongoDatabase using extension
 builder.Services.AddMongo(builder.Configuration, serviceSettings.ServiceName );
 
+builder.Services.AddSingleton<string>(serviceSettings.ServiceName);
+builder.Services.AddScoped(typeof(Play.Common.Repositories.IRepository<>), typeof(Play.Common.MongoDB.MongoRepository<>));
+
 
 var app = builder.Build();
 
