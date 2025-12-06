@@ -1,6 +1,8 @@
 using Play.Common.MongoDB;
+using Play.Common.Repositories;
 using Play.Common.Settings;
 using Play.Inventory.Client;
+using Polly;
 var builder = WebApplication.CreateBuilder(args);
 
 ServiceSettings serviceSettings = builder.Configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
@@ -16,10 +18,10 @@ builder.Services.AddMongo(builder.Configuration, serviceSettings.ServiceName );
 builder.Services.AddHttpClient<CatalogClient>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:5001");
-});
+}).AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(1)));
 
 builder.Services.AddSingleton<string>(serviceSettings.ServiceName);
-builder.Services.AddScoped(typeof(Play.Common.Repositories.IRepository<>), typeof(Play.Common.MongoDB.MongoRepository<>));
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Play.Common.MongoDB.MongoRepository<>));
 
 
 var app = builder.Build();
