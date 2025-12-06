@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D5lbW7Pf5C8=",
+  "dgSpecHash": "VxKy7BgS1O0=",
   "success": true,
-  "projectFilePath": "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+  "projectFilePath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
   "expectedPackageFiles": [
     "/Users/karimmoustamid/.nuget/packages/dnsclient/1.6.1/dnsclient.1.6.1.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/microsoft.aspnetcore.openapi/10.0.0-rc.2.25502.107/microsoft.aspnetcore.openapi.10.0.0-rc.2.25502.107.nupkg.sha512",
@@ -17,7 +17,8 @@
     "/Users/karimmoustamid/.nuget/packages/mongodb.driver/3.5.2/mongodb.driver.3.5.2.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/snappier/1.0.0/snappier.1.0.0.nupkg.sha512",
-    "/Users/karimmoustamid/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512"
+    "/Users/karimmoustamid/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512",
+    "/Users/karimmoustamid/.nuget/packages/play.common/1.0.0/play.common.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

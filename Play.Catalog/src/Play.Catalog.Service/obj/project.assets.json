@@ -602,11 +602,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectUniqueName": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "projectName": "Play.Catalog.Service",
-      "projectPath": "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "packagesPath": "/Users/karimmoustamid/.nuget/packages/",
-      "outputPath": "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Catalog/src/Play.Catalog.Service/obj/",
+      "outputPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/karimmoustamid/.nuget/NuGet/NuGet.Config"
@@ -615,16 +615,15 @@
         "net10.0"
       ],
       "sources": {
-        "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Packages": {},
-        "/usr/local/share/dotnet/library-packs": {},
+        "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Common/src/Play.Common/Play.Common.csproj": {
-              "projectPath": "/Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Common/src/Play.Common/Play.Common.csproj"
+            "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj": {
+              "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj"
             }
           }
         }
