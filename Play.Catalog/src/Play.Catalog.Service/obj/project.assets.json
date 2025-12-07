@@ -193,21 +193,6 @@
           }
         }
       },
-      "Play.Common/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "10.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
-          "Microsoft.Extensions.DependencyInjection": "10.0.0",
-          "MongoDB.Driver": "3.5.2"
-        },
-        "compile": {
-          "lib/net10.0/Play.Common.dll": {}
-        },
-        "runtime": {
-          "lib/net10.0/Play.Common.dll": {}
-        }
-      },
       "SharpCompress/0.30.1": {
         "type": "package",
         "compile": {
@@ -237,6 +222,22 @@
         },
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
+        }
+      },
+      "Play.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection": "10.0.0",
+          "MongoDB.Driver": "3.5.2"
+        },
+        "compile": {
+          "bin/placeholder/Play.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Play.Common.dll": {}
         }
       }
     }
@@ -529,17 +530,6 @@
         "packageIcon.png"
       ]
     },
-    "Play.Common/1.0.0": {
-      "sha512": "I7wTz5p3F6TkZ+DP9AmKlYUrgFk54/5Q/6dAkzr/b1fPlB4zk4zNGEzdsT1XRbXMWcZwDzJnFyZLv1Pd9osBBA==",
-      "type": "package",
-      "path": "play.common/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        "lib/net10.0/Play.Common.dll",
-        "play.common.1.0.0.nupkg.sha512",
-        "play.common.nuspec"
-      ]
-    },
     "SharpCompress/0.30.1": {
       "sha512": "XqD4TpfyYGa7QTPzaGlMVbcecKnXy4YmYLDWrU+JIj7IuRNl7DH2END+Ll7ekWIY8o3dAMWLFDE1xdhfIWD1nw==",
       "type": "package",
@@ -593,6 +583,11 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "Play.Common/1.0.0": {
+      "type": "project",
+      "path": "../../../Play.Common/src/Play.Common/Play.Common.csproj",
+      "msbuildProject": "../../../Play.Common/src/Play.Common/Play.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -607,11 +602,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectUniqueName": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "projectName": "Play.Catalog.Service",
-      "projectPath": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
+      "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
       "packagesPath": "/Users/karimmoustamid/.nuget/packages/",
-      "outputPath": "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/Play.Catalog/src/Play.Catalog.Service/obj/",
+      "outputPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/karimmoustamid/.nuget/NuGet/NuGet.Config"
@@ -620,13 +615,17 @@
         "net10.0"
       ],
       "sources": {
-        "/Users/karimmoustamid/Desktop/Code/Senior-Architect/Microservices Bootcamp/Building Microservices With .NET/packages": {},
+        "/Users/karimmoustamid/Desktop/Interview 9 Dec/Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj": {
+              "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -648,10 +647,6 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[10.0.0-rc.2.25502.107, )"
-          },
-          "Play.Common": {
-            "target": "Package",
-            "version": "[1.0.0, )"
           }
         },
         "imports": [

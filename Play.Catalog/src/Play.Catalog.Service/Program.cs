@@ -2,6 +2,7 @@ using Play.Catalog.Service.Entities;
 using Play.Common.MongoDB;
 using Play.Common.Settings;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Bind ServiceSettings from configuration and register in DI.
