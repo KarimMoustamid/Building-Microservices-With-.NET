@@ -1,14 +1,37 @@
-# // NOTE : Docker Command : docker run -d --rm --name mongoCatalog -p 27017:27017 -v mongodbdata:/data/db mongo
-
-version: '3.8'
+# Define the services to be run
 services:
+  # MongoDB service for data storage
   mongo:
+    # Use the latest MongoDB image
     image: mongo:latest
+    # Name the container for easy reference
     container_name: mongoCatalog
+    # Map host port 27017 to container port 27017
     ports:
       - 27017:27017
+    # Mount a named volume for persistent data storage
     volumes:
       - mongodbdata:/data/db
 
+  # RabbitMQ service for message queuing
+  rabbitmq:
+    # Use RabbitMQ with management UI
+    image: rabbitmq:management
+    # Name the container
+    container_name: rabbitmq
+    # Map ports: 5672 for AMQP, 15672 for management UI
+    ports:
+      - 5672:5672
+      - 15672:15672
+    # Mount a named volume for persistent data
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    # Set hostname for the container
+    hostname: rabbitmq
+
+# Define named volumes for data persistence
 volumes:
+  # Volume for MongoDB data
   mongodbdata:
+  # Volume for RabbitMQ data
+  rabbitmqdata:

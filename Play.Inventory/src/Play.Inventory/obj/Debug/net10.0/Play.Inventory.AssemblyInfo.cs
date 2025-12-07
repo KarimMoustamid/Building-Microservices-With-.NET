@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Play.Inventory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c523de1bed25e646ba42979c8e1a6c5ba5926bfa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8372e952da0a7f53279abd0cce24eac74ab62865")]
 [assembly: System.Reflection.AssemblyProductAttribute("Play.Inventory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Play.Inventory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
