@@ -1,6 +1,6 @@
 # Building-Microservices-With-.NET
 
-- Go from zero to a complete .NET microservices based system, step by step
+- Going from zero to a complete .NET microservices based system, step by step
 - Build complete microservices REST APIs powered by real databases
 - Avoid code duplication across microservices
 - Maximize service availability with the best inter-service communication patterns
