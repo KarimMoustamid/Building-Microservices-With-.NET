@@ -2,14 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Play.Catalog.Service.Controllers;
 using Common.Repositories;
+using Contracts;
 using Dtos;
 using Entities;
+using MassTransit;
 
 [ApiController]
 [Route("items")]
-public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
+public class ItemController(IRepository<Item> itemsRepository, IPublishEndpoint publishEndpoint) : ControllerBase
 {
     private readonly IRepository<Item> _itemsRepository = itemsRepository ?? throw new ArgumentNullException(nameof(itemsRepository));
+
+    private readonly IPublishEndpoint _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ItemDto>>> GetAllAsync()
@@ -48,6 +52,9 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
 
         await _itemsRepository.CreateAsync(item);
 
+        // Publish a CatalogItemCreated event to the message broker (MassTransit/RabbitMQ)
+        await publishEndpoint.Publish(new Contracts.CatalogItemCreated(item.Id, item.Name, item.Description));
+
         // MVC routing strips "Async" from action names, so supply the action name without the suffix
         return CreatedAtAction(nameof(GetItemByIdAsync).Replace("Async", ""), new { id = item.Id }, item);
     }
@@ -79,6 +86,10 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
         existingItem.Price = updateItemDto.Price;
 
         await _itemsRepository.UpdateAsync(existingItem);
+
+        // Publish a CatalogItemUpdated event to the message broker (MassTransit/RabbitMQ)
+        await publishEndpoint.Publish(new Contracts.CatalogItemUpdated(existingItem.Id, existingItem.Name, existingItem.Description));
+
         return NoContent();
     }
 
@@ -93,6 +104,10 @@ public class ItemController(IRepository<Item> itemsRepository) : ControllerBase
         }
 
         await _itemsRepository.RemoveAsync(id);
+
+        // Publish a CatalogItemDeleted event to the message broker (MassTransit/RabbitMQ)
+        await publishEndpoint.Publish(new Contracts.CatalogItemDeleted(id));
+
         return NoContent();
     }
 
