@@ -193,6 +193,21 @@
           }
         }
       },
+      "Play.Common/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection": "10.0.0",
+          "MongoDB.Driver": "3.5.2"
+        },
+        "compile": {
+          "lib/net10.0/Play.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Play.Common.dll": {}
+        }
+      },
       "SharpCompress/0.30.1": {
         "type": "package",
         "compile": {
@@ -224,20 +239,14 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "Play.Common/1.0.0": {
+      "Play.Catalog.Contracts/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "10.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "10.0.0",
-          "Microsoft.Extensions.DependencyInjection": "10.0.0",
-          "MongoDB.Driver": "3.5.2"
-        },
         "compile": {
-          "bin/placeholder/Play.Common.dll": {}
+          "bin/placeholder/Play.Catalog.Contracts.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Play.Common.dll": {}
+          "bin/placeholder/Play.Catalog.Contracts.dll": {}
         }
       }
     }
@@ -530,6 +539,17 @@
         "packageIcon.png"
       ]
     },
+    "Play.Common/1.0.0": {
+      "sha512": "I7wTz5p3F6TkZ+DP9AmKlYUrgFk54/5Q/6dAkzr/b1fPlB4zk4zNGEzdsT1XRbXMWcZwDzJnFyZLv1Pd9osBBA==",
+      "type": "package",
+      "path": "play.common/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "lib/net10.0/Play.Common.dll",
+        "play.common.1.0.0.nupkg.sha512",
+        "play.common.nuspec"
+      ]
+    },
     "SharpCompress/0.30.1": {
       "sha512": "XqD4TpfyYGa7QTPzaGlMVbcecKnXy4YmYLDWrU+JIj7IuRNl7DH2END+Ll7ekWIY8o3dAMWLFDE1xdhfIWD1nw==",
       "type": "package",
@@ -584,15 +604,16 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "Play.Common/1.0.0": {
+    "Play.Catalog.Contracts/1.0.0": {
       "type": "project",
-      "path": "../../../Play.Common/src/Play.Common/Play.Common.csproj",
-      "msbuildProject": "../../../Play.Common/src/Play.Common/Play.Common.csproj"
+      "path": "../Play.Catalog.Contracts/Play.Catalog.Contracts.csproj",
+      "msbuildProject": "../Play.Catalog.Contracts/Play.Catalog.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "Microsoft.AspNetCore.OpenApi >= 10.0.0-rc.2.25502.107",
+      "Play.Catalog.Contracts >= 1.0.0",
       "Play.Common >= 1.0.0"
     ]
   },
@@ -622,8 +643,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj": {
-              "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Common/src/Play.Common/Play.Common.csproj"
+            "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Contracts/Play.Catalog.Contracts.csproj": {
+              "projectPath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Contracts/Play.Catalog.Contracts.csproj"
             }
           }
         }
@@ -647,6 +668,10 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[10.0.0-rc.2.25502.107, )"
+          },
+          "Play.Common": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           }
         },
         "imports": [
