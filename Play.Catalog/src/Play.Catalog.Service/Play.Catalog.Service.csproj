@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Use matching MassTransit 7.3.1 packages (published) to avoid ambiguous extension method conflicts -->
+    <PackageReference Include="MassTransit" Version="7.3.1" />
     <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.7" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0-rc.2.25502.107" />
     <PackageReference Include="Play.Common" Version="1.0.0" />
   </ItemGroup>

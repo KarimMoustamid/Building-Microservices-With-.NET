@@ -142,3 +142,14 @@
 /Users/karimmoustamid/Desktop/Building-Microservices-With-.NET/Play.Catalog/src/Play.Catalog.Service/obj/Debug/net10.0/ref/Play.Catalog.Service.dll
 /Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Play.Catalog.Contracts.dll
 /Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Play.Catalog.Contracts.pdb
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Automatonymous.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/GreenPipes.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/MassTransit.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/MassTransit.AspNetCoreIntegration.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/MassTransit.ExtensionsDependencyInjectionIntegration.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/MassTransit.RabbitMqTransport.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/NewId.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Newtonsoft.Json.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/Newtonsoft.Json.Bson.dll
+/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/bin/Debug/net10.0/RabbitMQ.Client.dll
