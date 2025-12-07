@@ -30,7 +30,35 @@ builder.Services.AddHttpClient<CatalogClient>(client =>
             .WaitAndRetryAsync(5, retryAttempt =>
                 TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)),
                 onRetry: (outcome, timespan, retryAttempt) =>
-                    Console.WriteLine($"Retry {retryAttempt} of {outcome.Result.StatusCode} after {timespan.TotalSeconds} seconds. Waiting...")))
+                {
+                    if (outcome.Exception is not null)
+                    {
+                        Console.WriteLine($"Retry {retryAttempt} due to {outcome.Exception.GetType().Name}: {outcome.Exception.Message}. Waiting {timespan.TotalSeconds} seconds...");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Retry {retryAttempt} of {outcome.Result?.StatusCode} after {timespan.TotalSeconds} seconds. Waiting...");
+                    }
+                }))
+.AddTransientHttpErrorPolicy(builder => builder.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+    3,
+    TimeSpan.FromSeconds(15),
+    onBreak: (outcome, timespan) =>
+    {
+        if (outcome.Exception is not null)
+        {
+            Console.WriteLine($"Opening the circuit for {timespan.TotalSeconds} seconds due to {outcome.Exception.GetType().Name}: {outcome.Exception.Message}");
+        }
+        else
+        {
+            Console.WriteLine($"Opening the circuit for {timespan.TotalSeconds} seconds. Status: {outcome.Result?.StatusCode}");
+        }
+    },
+    onReset: () =>
+    {
+        Console.WriteLine($"Closing the circuit...");
+    }
+))
 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(1)));
 
 builder.Services.AddSingleton<string>(serviceSettings.ServiceName);
