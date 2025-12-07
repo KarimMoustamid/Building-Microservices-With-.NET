@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "T8ZTwx5P7OU=",
+  "dgSpecHash": "p/SKeo94Klg=",
   "success": true,
   "projectFilePath": "/Users/karimmoustamid/Desktop/Interview 9 Dec/Play.Catalog/src/Play.Catalog.Service/Play.Catalog.Service.csproj",
   "expectedPackageFiles": [
@@ -25,7 +25,7 @@
     "/Users/karimmoustamid/.nuget/packages/newid/3.0.3/newid.3.0.3.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/newtonsoft.json/12.0.1/newtonsoft.json.12.0.1.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
-    "/Users/karimmoustamid/.nuget/packages/play.common/1.0.0/play.common.1.0.0.nupkg.sha512",
+    "/Users/karimmoustamid/.nuget/packages/play.common/1.0.1/play.common.1.0.1.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/rabbitmq.client/6.2.2/rabbitmq.client.6.2.2.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",
     "/Users/karimmoustamid/.nuget/packages/snappier/1.0.0/snappier.1.0.0.nupkg.sha512",

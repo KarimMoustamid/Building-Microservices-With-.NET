@@ -14,7 +14,9 @@ namespace Play.Common.Repositories.MassTransit
         {
             services.AddMassTransit<IBus>(configure =>
             {
+                // Register consumers
                 configure.AddConsumers(Assembly.GetEntryAssembly());
+                // Register bus definitions
                 configure.UsingRabbitMq((context, cfg) =>
                 {
                     #region Setup

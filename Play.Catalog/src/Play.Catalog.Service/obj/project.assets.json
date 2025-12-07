@@ -350,9 +350,12 @@
           }
         }
       },
-      "Play.Common/1.0.0": {
+      "Play.Common/1.0.1": {
         "type": "package",
         "dependencies": {
+          "MassTransit": "7.3.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMQ": "7.3.1",
           "Microsoft.Extensions.Configuration": "10.0.0",
           "Microsoft.Extensions.Configuration.Binder": "10.0.0",
           "Microsoft.Extensions.DependencyInjection": "10.0.0",
@@ -888,14 +891,14 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Play.Common/1.0.0": {
-      "sha512": "I7wTz5p3F6TkZ+DP9AmKlYUrgFk54/5Q/6dAkzr/b1fPlB4zk4zNGEzdsT1XRbXMWcZwDzJnFyZLv1Pd9osBBA==",
+    "Play.Common/1.0.1": {
+      "sha512": "aAZw28UFgleMm1xpGpddyJ4Z5yVhVKAyvtT1gvasgaSuLju00Sp8qapeaD+gUaAGKIBBKg2mYREwhgoptunC/A==",
       "type": "package",
-      "path": "play.common/1.0.0",
+      "path": "play.common/1.0.1",
       "files": [
         ".nupkg.metadata",
         "lib/net10.0/Play.Common.dll",
-        "play.common.1.0.0.nupkg.sha512",
+        "play.common.1.0.1.nupkg.sha512",
         "play.common.nuspec"
       ]
     },
@@ -980,12 +983,9 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "MassTransit >= 7.3.1",
-      "MassTransit.AspNetCore >= 7.3.1",
-      "MassTransit.RabbitMQ >= 7.3.1",
       "Microsoft.AspNetCore.OpenApi >= 10.0.0-rc.2.25502.107",
       "Play.Catalog.Contracts >= 1.0.0",
-      "Play.Common >= 1.0.0"
+      "Play.Common >= 1.0.1"
     ]
   },
   "packageFolders": {
@@ -1036,25 +1036,13 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
-          "MassTransit": {
-            "target": "Package",
-            "version": "[7.3.1, )"
-          },
-          "MassTransit.AspNetCore": {
-            "target": "Package",
-            "version": "[7.3.1, )"
-          },
-          "MassTransit.RabbitMQ": {
-            "target": "Package",
-            "version": "[7.3.1, )"
-          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[10.0.0-rc.2.25502.107, )"
           },
           "Play.Common": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.1, )"
           }
         },
         "imports": [

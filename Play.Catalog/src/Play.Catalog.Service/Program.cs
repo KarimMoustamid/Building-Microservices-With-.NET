@@ -3,8 +3,8 @@ using MassTransit;
 using MassTransit.Definition;
 using MassTransit.MultiBus;
 using Play.Catalog.Service.Entities;
-using Play.Catalog.Service.Settings;
 using Play.Common.MongoDB;
+using Play.Common.Repositories.MassTransit;
 using Play.Common.Settings;
 
 
@@ -21,25 +21,13 @@ var rabbitMQSettings = builder.Configuration.GetSection(nameof(RabbitMQSettings)
 
 // Add services to the container.
 
-// Register MassTransit
-builder.Services.AddMassTransit<IBus>(x =>
-{
-    x.UsingRabbitMq((context, cfg) =>
-    {
-        cfg.Host(rabbitMQSettings.Host);
-        cfg.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
-    });
-});
-
-// Register the hosted service for MassTransit (use the standard overload)
-builder.Services.AddMassTransitHostedService();
-
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Register mongo client and IMongoDatabase using extension
-builder.Services.AddMongo(builder.Configuration, serviceSettings.ServiceName);
+// Note : Play.Common Nuget
+// Register MongoDB client and database, then configure MassTransit with RabbitMQ using extension methods
+builder.Services.AddMongo(builder.Configuration, serviceSettings.ServiceName).AddMassTransitWithRabbitMq();
 
 // Register a repository for Item using the generic MongoRepository<T>
 builder.Services.AddMongoRepository<Item>("items");
